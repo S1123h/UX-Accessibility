@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="An accessible technology blog and information portal demonstrating semantic HTML, ARIA, keyboard navigation, and WCAG-aligned design." />
+  <title>Accessible Tech Digest — Technology news and guides</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Keyboard users can bypass repeated navigation and reach main content -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-layout">
+      <a class="site-brand" href="#main-content">
+        <span class="brand-badge" aria-hidden="true">AT</span>
+        <span>Accessible Tech Digest</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#articles" aria-current="page">Articles</a></li>
+          <li><a href="#topics">Topics</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
+          <li><a href="#accessibility-report">Accessibility report</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <!-- Introductory content is placed in a landmark and associated with a heading -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <p class="eyebrow">Technology, explained clearly</p>
+        <h1 id="hero-heading">Practical technology guides for everyone</h1>
+        <p class="hero-text">
+          Accessible Tech Digest publishes clear articles about web development,
+          digital accessibility, privacy, and inclusive product design.
+        </p>
+        <a class="button" href="#articles">Browse latest articles</a>
+      </div>
+    </section>
+
+    <!-- Articles use a list because they represent a collection of related items -->
+    <section id="articles" class="articles" aria-labelledby="articles-heading">
+      <div class="container">
+        <h2 id="articles-heading">Latest articles</h2>
+
+        <ul class="article-list">
+          <li class="article-card">
+            <article aria-labelledby="article-1-title">
+              <p class="article-meta">
+                <time datetime="2026-11-02">2 November 2026</time>
+                <span aria-hidden="true">·</span>
+                <span>Accessibility</span>
+              </p>
+              <h3 id="article-1-title">
+                <a href="#">A practical introduction to accessible forms</a>
+              </h3>
+              <p>
+                Learn how labels, descriptions, error messages, and focus
+                management help every user complete forms successfully.
+              </p>
+              <p class="article-tags">
+                <span class="tag">Forms</span>
+                <span class="tag">WCAG</span>
+              </p>
+            </article>
+          </li>
+
+          <li class="article-card">
+            <article aria-labelledby="article-2-title">
+              <p class="article-meta">
+                <time datetime="2026-10-28">28 October 2026</time>
+                <span aria-hidden="true">·</span>
+                <span>Web development</span>
+              </p>
+              <h3 id="article-2-title">
+                <a href="#">Semantic HTML: the foundation of usable interfaces</a>
+              </h3>
+              <p>
+                Discover why native elements often provide better accessibility
+                than custom controls, and when ARIA is genuinely needed.
+              </p>
+              <p class="article-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">ARIA</span>
+              </p>
+            </article>
+          </li>
+
+          <li class="article-card">
+            <article aria-labelledby="article-3-title">
+              <p class="article-meta">
+                <time datetime="2026-10-21">21 October 2026</time>
+                <span aria-hidden="true">·</span>
+                <span>Privacy</span>
+              </p>
+              <h3 id="article-3-title">
+                <a href="#">Designing consent dialogs people can understand</a>
+              </h3>
+              <p>
+                Clear language, predictable focus behavior, and accessible
+                controls make consent choices easier to understand.
+              </p>
+              <p class="article-tags">
+                <span class="tag">UX</span>
+                <span class="tag">Privacy</span>
+              </p>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Topic filter uses native form controls for maximum accessibility -->
+    <section id="topics" class="topics" aria-labelledby="topics-heading">
+      <div class="container">
+        <h2 id="topics-heading">Explore by topic</h2>
+        <p id="filter-help">Choose one or more topics to filter the reading list.</p>
+
+        <form class="topic-filter" aria-describedby="filter-help">
+          <fieldset>
+            <legend>Filter articles</legend>
+
+            <div class="checkbox-row">
+              <input type="checkbox" id="topic-accessibility" name="topics" value="accessibility" />
+              <label for="topic-accessibility">Accessibility</label>
+            </div>
+
+            <div class="checkbox-row">
+              <input type="checkbox" id="topic-development" name="topics" value="development" />
+              <label for="topic-development">Web development</label>
+            </div>
+
+            <div class="checkbox-row">
+              <input type="checkbox" id="topic-privacy" name="topics" value="privacy" />
+              <label for="topic-privacy">Privacy</label>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="button">Apply filter</button>
+        </form>
+
+        <!-- Live region announces filter results without moving focus -->
+        <p class="filter-result" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- Newsletter form demonstrates labels, hints, errors, and focus handling -->
+    <section id="newsletter" class="newsletter" aria-labelledby="newsletter-heading">
+      <div class="container">
+        <h2 id="newsletter-heading">Subscribe to the newsletter</h2>
+        <p>Get one concise accessibility and technology digest each week.</p>
+
+        <form id="newsletter-form" novalidate>
+          <div class="form-field">
+            <label for="newsletter-email">Email address</label>
+            <span id="email-hint" class="field-hint">
+              Example: name@example.com
+            </span>
+            <input
+              type="email"
+              id="newsletter-email"
+              name="email"
+              autocomplete="email"
+              inputmode="email"
+              required
+              aria-describedby="email-hint email-error"
+            />
+            <p id="email-error" class="field-error" role="alert"></p>
+          </div>
+
+          <button type="submit" class="button">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- The accessibility report is part of the deliverable and also demonstrates
+         a well-structured content section -->
+    <section id="accessibility-report" class="report" aria-labelledby="report-heading">
+      <div class="container">
+        <h2 id="report-heading">Accessibility improvements</h2>
+        <p>
+          This page was designed and reviewed against common WCAG 2.2 Level AA
+          considerations, including perceivable content, operable controls,
+          understandable language, and robust markup.
+        </p>
+
+        <div class="report-grid">
+          <article class="report-card">
+            <h3>Semantic structure</h3>
+            <p>
+              Landmarks, headings, lists, native buttons, and form labels give
+              assistive technology a meaningful page outline.
+            </p>
+          </article>
+
+          <article class="report-card">
+            <h3>Keyboard operation</h3>
+            <p>
+              A skip link, visible focus indicators, logical tab order, and
+              focus management support keyboard-only navigation.
+            </p>
+          </article>
+
+          <article class="report-card">
+            <h3>Clear feedback</h3>
+            <p>
+              Form errors use `role="alert"`, while filter results use a polite
+              live region so updates are announced without interrupting users.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Accessible Tech Digest. Built for clarity and inclusion.</p>
+      <nav aria-label="Footer">
+        <ul class="footer-links">
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#accessibility-report">Accessibility statement</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
